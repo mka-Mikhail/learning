@@ -100,7 +100,7 @@ public class HW2 {
                 for (int j = 0; j <= arr.length - 1 - 1; j++) {
                     arr[j] = arr[j + 1];
                 }
-                arr[arr.length - 1 - 1] = lastElement;
+                arr[arr.length - 1] = lastElement;
             }
             return arr;
         } else {
