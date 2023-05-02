@@ -14,10 +14,10 @@ public class Main {
         System.out.println("\ndog1");
         System.out.println("бег: " + dog1.run(200));
         System.out.println("плаванье: " + dog1.swim(100));
-        System.out.println("прыжок: " + dog1.jump(2));
+        System.out.println("прыжок: " + dog1.jump(0.5f));
 
         Animal cat2 = new Cat(250, 7, 4);
-        Animal dog2 = new Cat(600, 15, 2);
+        Animal dog2 = new Dog(600, 15, 2);
 
         System.out.println("\ncat2");
         System.out.println("бег: " + cat2.run(200));

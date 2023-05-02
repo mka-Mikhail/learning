@@ -6,7 +6,7 @@ public class Cat extends Animal {
         super(200, 10, 2);
     }
 
-    public Cat(int limitRun, int limitSwim, int limitJump) {
+    public Cat(int limitRun, int limitSwim, float limitJump) {
         super(limitRun, limitSwim, limitJump);
     }
 }
