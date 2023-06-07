@@ -1,38 +1,41 @@
 package lesson4.homework.task12;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Random;
 
 public class TaskExecutor {
-    private int numberOfExecutions = 0;
+    private final Queue<Long> queue = new LinkedList<>();
+    private int maxExecsPerMinute;
+    private int lastExecsPerMinute;
+
+    public TaskExecutor(int maxExecsPerMinute) {
+        this.maxExecsPerMinute = maxExecsPerMinute;
+    }
 
     public void executeTask(Task task) throws InterruptedException {
         Random random = new Random();
-        long timeStop;
-        long timeOfLastExecution = 0;
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+        long currentExecTime;
         while (true) {
-            timeStop = System.currentTimeMillis() + 60 * 1000;
-            while (numberOfExecutions != 10) {
+            currentExecTime = System.currentTimeMillis();
+            if (queue.peek() != null && currentExecTime - queue.peek() > 60000) {
+                lastExecsPerMinute--;
+                queue.remove();
+            }
+            if (lastExecsPerMinute < maxExecsPerMinute) {
                 task.execute();
-                timeOfLastExecution = System.currentTimeMillis();
-                if (System.currentTimeMillis() >= timeStop - 300) {
-                    break;
-                }
-                numberOfExecutions++;
-                System.out.println("Кол-во выполнений: " + numberOfExecutions);
-                int sleep = (random.nextInt(10) + 1) * 1000;
-                System.out.println("Пауза: " + sleep / 1000);
-                Thread.sleep(sleep);
-            }
-            if (numberOfExecutions == 10) {
-                System.out.println("\nМетод отработал 10 раз\n");
+                System.out.println(timeFormat.format(new Date(currentExecTime)));
+                lastExecsPerMinute++;
+                queue.add(System.currentTimeMillis());
             } else {
-                System.out.println("\nМетод НЕ отработал 10 раз\n");
+                System.out.println("LIMIT!!! " + timeFormat.format(new Date(currentExecTime)));
             }
-            if (timeOfLastExecution < timeStop) {
-                System.out.println("Ждём ещё: " + (timeStop - timeOfLastExecution) + "\n");
-                Thread.sleep(timeStop - timeOfLastExecution);
-            }
-            numberOfExecutions = 0;
+            int sleepTime = random.nextInt(20) * 1000;
+            System.out.println("ПАУЗА: " + sleepTime / 1000 + "\n");
+            Thread.sleep(sleepTime);
         }
     }
 }
