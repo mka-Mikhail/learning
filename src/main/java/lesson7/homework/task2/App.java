@@ -1,6 +1,7 @@
 package lesson7.homework.task2;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class App {
     public static void main(String[] args) {
@@ -10,6 +11,7 @@ public class App {
         ArrayList<String> strings = toArrayList(strs);
         System.out.println(integers);
         System.out.println(strings);
+        System.out.println(Arrays.asList(nums));
     }
 
     public static <T> ArrayList<T> toArrayList(T[] array) {

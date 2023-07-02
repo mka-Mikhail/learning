@@ -1,7 +1,9 @@
 package lesson7.homework.task4;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 public class App {
     public static void main(String[] args) {
@@ -10,11 +12,26 @@ public class App {
                 "car", "note", "little", "dog", "mouse",
                 "car", "book", "piano", "stream", "piano"
         };
-        List<String> arrayOfWords = List.of(words);
-        System.out.println("Список всех слов:\n" + arrayOfWords);
-        List<String> unique = getUnique(arrayOfWords);
+        List<String> listOfWords = List.of(words);
+        System.out.println("Список всех слов:\n" + listOfWords);
+        List<String> unique = getUnique(listOfWords);
         System.out.println("Список без повторений:\n" + unique);
-        quantityOfWord(arrayOfWords, unique);
+        quantityOfWord(listOfWords, unique);
+        System.out.println("\n");
+        numsOfWord(listOfWords);
+    }
+
+    private static void numsOfWord(List<String> words) {
+        Map<String, Integer> map = new HashMap<>();
+        for (String word : words) {
+            if (!map.containsKey(word)) {
+                map.put(word, 1);
+            } else {
+                map.put(word, map.get(word) + 1);
+            }
+        }
+        System.out.println("Уникальные слова: " + map.keySet());
+        System.out.println("Кол-во уникальных слов: " + map);
     }
 
     private static void quantityOfWord(List<String> words, List<String> unique) {

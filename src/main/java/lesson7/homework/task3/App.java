@@ -30,15 +30,11 @@ public class App {
         System.out.println("Вес orangeBox1: " + orangeBox1.getWeight());
         System.out.println("Вес orangeBox2: " + orangeBox2.getWeight());
 
-        System.out.println("\nappleBox1 и orangeBox1: " + compare(appleBox1, orangeBox1));
-        System.out.println("appleBox1 и appleBox2: " + compare(appleBox1, appleBox2));
+        System.out.println("\nappleBox1 и orangeBox1: " + appleBox1.compare(orangeBox1));
+        System.out.println("appleBox1 и appleBox2: " + appleBox1.compare(appleBox2));
 
         System.out.println("\nПересыпаем из orangeBox1 в orangeBox2");
         orangeBox2.pourOver(orangeBox1);
         System.out.println("Вес orangeBox2 после: " + orangeBox2.getWeight());
-    }
-
-    private static <T extends Fruit> String compare(Box<?> box1, Box<?> box2) {
-        return box1.compare(box2) ? "Вес равен" : "Вес не равен";
     }
 }
