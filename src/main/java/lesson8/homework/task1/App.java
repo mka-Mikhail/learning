@@ -3,6 +3,22 @@ package lesson8.homework.task1;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * Время операции в мс:
+ * вставка:
+ *      в начало:
+ *          arrayList 2
+ *          linkedList 0
+ *      в конец:
+ *          arrayList 0
+ *          linkedList 0
+ *      в середину:
+ *          arrayList 1
+ *          linkedList 31
+ * чтение рандомного значения:
+ *      из arrayList 1
+ *      из linkedList 15
+ */
 public class App {
     private static ArrayList<Detail> detailsArrayList = new ArrayList<>();
     private static LinkedList<Detail> detailsLinkedList = new LinkedList<>();
@@ -46,12 +62,12 @@ public class App {
         String element;
         time = System.currentTimeMillis();
         for (int i = 0; i < 1000; i++) {
-            element = detailsArrayList.get((int) (Math.random() + detailsArrayList.size() - 1)).getNumber();
+            element = detailsArrayList.get((int) (Math.random() * detailsArrayList.size() - 1)).getNumber();
         }
         System.out.println("Рандомное значение из arrayList " + (System.currentTimeMillis() - time));
         time = System.currentTimeMillis();
         for (int i = 0; i < 1000; i++) {
-            element = detailsLinkedList.get((int) (Math.random() + detailsLinkedList.size() - 1)).getNumber();
+            element = detailsLinkedList.get((int) (Math.random() * detailsLinkedList.size() - 1)).getNumber();
         }
         System.out.println("Рандомное значение из linkedList " + (System.currentTimeMillis() - time));
     }

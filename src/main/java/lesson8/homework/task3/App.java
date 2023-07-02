@@ -8,15 +8,8 @@ public class App {
         List<String> strings1 = List.of("asdf", "qwer", "f", "tyh");
         List<String> strings2 = List.of("popg", "sd", "f", "tyh");
 
-        HashSetExtend<String> set1 = new HashSetExtend<>();
-        HashSetExtend<String> set2 = new HashSetExtend<>();
-
-        for (String str : strings1) {
-            set1.add(str);
-        }
-        for (String str : strings2) {
-            set2.add(str);
-        }
+        HashSetExtend<String> set1 = new HashSetExtend<>(strings1);
+        HashSetExtend<String> set2 = new HashSetExtend<>(strings2);
 
         HashSet<String> result = set1.union(set2);
         System.out.println("Объединение: " + result);
