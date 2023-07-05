@@ -7,17 +7,17 @@ import java.util.LinkedList;
  * Время операции в мс:
  * вставка:
  *      в начало:
- *          arrayList 2
- *          linkedList 0
+ *          arrayList 2239000
+ *          linkedList 442700
  *      в конец:
- *          arrayList 0
- *          linkedList 0
+ *          arrayList 308800
+ *          linkedList 297800
  *      в середину:
- *          arrayList 1
- *          linkedList 31
+ *          arrayList 736500
+ *          linkedList 33359700
  * чтение рандомного значения:
- *      из arrayList 1
- *      из linkedList 15
+ *      из arrayList 1203600
+ *      из linkedList 23629800
  */
 public class App {
     private static ArrayList<Detail> detailsArrayList = new ArrayList<>();
@@ -26,50 +26,50 @@ public class App {
     public static void main(String[] args) {
         initArrays();
 
-        long time = System.currentTimeMillis();
+        long time = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
-            detailsArrayList.add(i, new Detail("@" + i));
+            detailsArrayList.add(0, new Detail("@" + i));
         }
-        System.out.println("В начало arrayList " + (System.currentTimeMillis() - time));
-        time = System.currentTimeMillis();
+        System.out.println("В начало arrayList " + (System.nanoTime() - time));
+        time = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
             detailsLinkedList.addFirst(new Detail("@" + i));
         }
-        System.out.println("В начало linkedList " + (System.currentTimeMillis() - time));
+        System.out.println("В начало linkedList " + (System.nanoTime() - time));
 
-        time = System.currentTimeMillis();
+        time = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
             detailsArrayList.add(new Detail("#" + i));
         }
-        System.out.println("В конец arrayList " + (System.currentTimeMillis() - time));
-        time = System.currentTimeMillis();
+        System.out.println("В конец arrayList " + (System.nanoTime() - time));
+        time = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
             detailsLinkedList.addLast(new Detail("#" + i));
         }
-        System.out.println("В конец linkedList " + (System.currentTimeMillis() - time));
+        System.out.println("В конец linkedList " + (System.nanoTime() - time));
 
-        time = System.currentTimeMillis();
+        time = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
             detailsArrayList.add(detailsArrayList.size() / 2, new Detail("$" + i));
         }
-        System.out.println("В середину arrayList " + (System.currentTimeMillis() - time));
-        time = System.currentTimeMillis();
+        System.out.println("В середину arrayList " + (System.nanoTime() - time));
+        time = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
             detailsLinkedList.add(detailsLinkedList.size() / 2, new Detail("$" + i));
         }
-        System.out.println("В середину linkedList " + (System.currentTimeMillis() - time));
+        System.out.println("В середину linkedList " + (System.nanoTime() - time));
 
         String element;
-        time = System.currentTimeMillis();
+        time = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
-            element = detailsArrayList.get((int) (Math.random() * detailsArrayList.size() - 1)).getNumber();
+            element = detailsArrayList.get((int) (Math.random() * detailsArrayList.size())).getNumber();
         }
-        System.out.println("Рандомное значение из arrayList " + (System.currentTimeMillis() - time));
-        time = System.currentTimeMillis();
+        System.out.println("Рандомное значение из arrayList " + (System.nanoTime() - time));
+        time = System.nanoTime();
         for (int i = 0; i < 1000; i++) {
-            element = detailsLinkedList.get((int) (Math.random() * detailsLinkedList.size() - 1)).getNumber();
+            element = detailsLinkedList.get((int) (Math.random() * detailsLinkedList.size())).getNumber();
         }
-        System.out.println("Рандомное значение из linkedList " + (System.currentTimeMillis() - time));
+        System.out.println("Рандомное значение из linkedList " + (System.nanoTime() - time));
     }
 
     private static void initArrays() {
