@@ -33,8 +33,6 @@ public class App {
                         .map(innerEntry -> new Spec(entry.getKey(), innerEntry.getKey(), innerEntry.getValue())))
                 .toList();
 
-        for (Spec spec : specs) {
-            System.out.println(spec);
-        }
+        specs.stream().forEach(System.out::println);
     }
 }
